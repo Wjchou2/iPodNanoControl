@@ -3,9 +3,9 @@ import time
 
 ipod = IPodNano()
 ipod.scan("hi")
-print("found ipod: " + ipod.get_name)
+print("found ipod: " + ipod.get_name())
 time.sleep(2)
-# ipod.connect()
+ipod.connect()
 while True:
     ipod.play()
     time.sleep(1)
