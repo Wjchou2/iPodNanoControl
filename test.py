@@ -2,10 +2,10 @@ from nanobtcontrol import IPodNano
 import time
 
 ipod = IPodNano()
-search = input("ipodname")
-ipod.scan(search)
-if ipod.get_mac:
-    print("found ipod: " + ipod.get_name())
+# search = input("ipodname")
+ipod.scan("iPod")
+if ipod.get_mac():
+    print(ipod.get_name())
     time.sleep(2)
     ipod.connect()
     while True:
@@ -14,4 +14,4 @@ if ipod.get_mac:
         ipod.pause()
         time.sleep(1)
 else:
-    print("failed to find ipod with name: " + search)
+    print("failed to find ipod with name: ")
