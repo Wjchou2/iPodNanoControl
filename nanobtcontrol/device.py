@@ -34,6 +34,7 @@ class IPodNano:
         quit
         """
         subprocess.run(["bluetoothctl"], input=commands, text=True, check=True)
+        time.sleep(2)
         self.player_path = (
             "/org/bluez/hci0/dev_" + self.mac.replace(":", "_") + "/player0"
         )
