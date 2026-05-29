@@ -21,20 +21,19 @@ class IPodNano:
                 parts = line.split(" ", 2)
                 self.mac = parts[1]
                 self.name = parts[2]
+                subprocess.run(["bluetoothctl", "pair", self.mac], check=True)
                 return self
+
         return None
 
     def connect(self):
         if self.mac is None:
-            raise RuntimeError("No device selected. Scan first")
-        commands = f"""
-        trust {self.mac}
-        pair {self.mac}
-        connect {self.mac}
-        quit
-        """
-        subprocess.run(["bluetoothctl"], input=commands, text=True, check=True)
-        time.sleep(2)
+            raise RuntimeError("No device selected. Run scan() first.")
+
+        subprocess.run(["bluetoothctl", "trust", self.mac], check=True)
+
+        subprocess.run(["bluetoothctl", "connect", self.mac], check=True)
+
         self.player_path = (
             "/org/bluez/hci0/dev_" + self.mac.replace(":", "_") + "/player0"
         )
