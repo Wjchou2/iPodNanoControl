@@ -8,6 +8,12 @@ class IPodNano:
         self.name = None
         self.player_path = None
 
+    def get_mac(self):
+        return self.mac
+
+    def get_name(self):
+        return self.name
+
     def scan(self, name, timeout=10):
         subprocess.run(["bluetoothctl", "scan", "on"], check=True)
         time.sleep(timeout)
@@ -32,7 +38,11 @@ class IPodNano:
 
         subprocess.run(["bluetoothctl", "trust", self.mac], check=True)
 
+        time.sleep(2)
+
         subprocess.run(["bluetoothctl", "connect", self.mac], check=True)
+
+        time.sleep(2)
 
         self.player_path = (
             "/org/bluez/hci0/dev_" + self.mac.replace(":", "_") + "/player0"
