@@ -1,0 +1,9 @@
+[project]
+name = "ipodnanoctl"
+version = "0.1.0"
+description = "Control an iPod Nano over Bluetooth AVRCP using BlueZ"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+ipodnanoctl = "ipodnanoctl.device:main"
