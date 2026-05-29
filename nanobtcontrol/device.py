@@ -53,11 +53,11 @@ class IPodNano:
         subprocess.run(["bluetoothctl", "trust", self.mac], check=True)
         print("trusting")
 
-        time.sleep(2)
+        time.sleep(0.5)
 
         subprocess.run(["bluetoothctl", "connect", self.mac], check=True)
         print("connecting")
-        time.sleep(2)
+        time.sleep(1)
 
         self.player_path = (
             "/org/bluez/hci0/dev_" + self.mac.replace(":", "_") + "/player0"
