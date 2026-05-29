@@ -27,6 +27,7 @@ class IPodNano:
                 parts = line.split(" ", 2)
                 self.mac = parts[1]
                 self.name = parts[2]
+                subprocess.run(["bluetoothctl", "scan", "off"], check=True)
                 return self
 
         return None
