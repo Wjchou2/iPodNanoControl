@@ -15,8 +15,9 @@ if ipod.get_mac():
 
     while True:
         # ipod.next()
-        ipod.equalizer()
-        ipod.shuffle()
+        ipod.play()
+        time.sleep(1)
+        ipod.pause()
         time.sleep(1)
 
         # print(ipod.track())
