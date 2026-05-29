@@ -37,11 +37,12 @@ class IPodNano:
             raise RuntimeError("No device selected. Run scan() first.")
 
         subprocess.run(["bluetoothctl", "trust", self.mac], check=True)
+        print("trusting")
 
         time.sleep(2)
 
         subprocess.run(["bluetoothctl", "connect", self.mac], check=True)
-
+        print("connecting")
         time.sleep(2)
 
         self.player_path = (
