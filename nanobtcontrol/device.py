@@ -27,14 +27,27 @@ class IPodNano:
                 parts = line.split(" ", 2)
                 self.mac = parts[1]
                 self.name = parts[2]
-                subprocess.run(["bluetoothctl", "pair", self.mac], check=True)
                 return self
 
         return None
 
+    def _is_paired(self):
+        result = subprocess.run(
+            ["bluetoothctl", "info", self.mac],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+        return "Paired: yes" in result.stdout
+
+    def pair(self):
+        print("pairing")
+        subprocess.run(["bluetoothctl", "pair", self.mac], check=True)
+
     def connect(self):
-        if self.mac is None:
-            raise RuntimeError("No device selected. Run scan() first.")
+        if not self._is_paired():
+            self.pair()
 
         subprocess.run(["bluetoothctl", "trust", self.mac], check=True)
         print("trusting")
