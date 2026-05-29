@@ -8,13 +8,18 @@ if ipod.get_mac():
     print(ipod.get_name())
 
     ipod.connect()
+    
     # ipod.stop()
     # print("Stopping")
     # time.sleep(2)
 
     while True:
-        ipod.next()
-        print(ipod.track())
+        # ipod.next()
+        ipod.equalizer()
+        ipod.shuffle()
+        time.sleep(1)
+
+        # print(ipod.track())
 
 else:
     print("failed to find ipod with name: ")

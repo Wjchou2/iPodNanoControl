@@ -77,6 +77,8 @@ class IPodNano:
 
     def stop(self):
         self._command("Stop")
+    def shuffle(self):
+        self._command("Shuffle")
 
     def status(self):
         return self._get("Status")
@@ -86,6 +88,8 @@ class IPodNano:
 
     def position(self):
         return self._get("Position")
+    def equalizer(self):
+        return self._get("Equalizer")
 
     def _command(self, cmd):
         subprocess.run(
