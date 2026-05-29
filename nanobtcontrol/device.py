@@ -79,13 +79,13 @@ class IPodNano:
         self._command("Stop")
 
     def status(self):
-        return self._get("Status").split('"')[1]
+        return self._get("Status")
 
     def track(self):
-        return self._get("Track").split('"')[1]
+        return self._get("Track")
 
     def position(self):
-        return int(self._get("Position").split()[1])
+        return self._get("Position")
 
     def _command(self, cmd):
         subprocess.run(
