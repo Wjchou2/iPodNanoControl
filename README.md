@@ -153,6 +153,7 @@ not expose every command or property.
 - The first AVRCP player (`player0`) is assumed.
 - Disconnect and command-line interfaces are not implemented.
 - Command and property support depends on the connected iPod model and firmware.
+- Device audio disabled when connected vai bluetooth
 
 ## Project structure
 
