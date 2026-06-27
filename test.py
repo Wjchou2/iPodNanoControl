@@ -8,7 +8,7 @@ if ipod.get_mac():
     print(ipod.get_name())
 
     ipod.connect()
-    
+
     # ipod.stop()
     # print("Stopping")
     # time.sleep(2)
